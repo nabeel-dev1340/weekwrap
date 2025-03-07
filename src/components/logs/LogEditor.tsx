@@ -26,9 +26,6 @@ import {
 } from "lucide-react";
 import { LogEditorProps } from "@/types/logs";
 import { motion } from "framer-motion";
-import BulletList from '@tiptap/extension-bullet-list';
-import OrderedList from '@tiptap/extension-ordered-list';
-import ListItem from '@tiptap/extension-list-item';
 
 export default function LogEditor({
   onSave,
@@ -46,13 +43,15 @@ export default function LogEditor({
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
-        bulletList: false,
-        orderedList: false,
-        listItem: false,
+        // Don't disable these - let StarterKit handle them
+        // bulletList: false,
+        // orderedList: false,
+        // listItem: false,
       }),
-      BulletList,
-      OrderedList,
-      ListItem,
+      // Don't add these separately as they're already in StarterKit
+      // BulletList,
+      // OrderedList,
+      // ListItem,
       Image,
       Link,
       Underline,
