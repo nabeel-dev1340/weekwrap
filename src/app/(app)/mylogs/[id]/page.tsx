@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase";
 import { useAuth } from "@/components/providers/AuthProvider";
@@ -24,13 +24,7 @@ export default function LogDetailPage() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
-  useEffect(() => {
-    if (user && id) {
-      fetchLog();
-    }
-  }, [user, id]);
-
-  const fetchLog = async () => {
+  const fetchLog = useCallback(async () => {
     try {
       setIsLoading(true);
       const supabase = createClient();
@@ -50,12 +44,17 @@ export default function LogDetailPage() {
       }
     } catch (error) {
       console.error("Error fetching log:", error);
-      toast.error("Failed to load the log");
-      router.push("/mylogs");
+      toast.error("Failed to load log");
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [id, user?.id]);
+
+  useEffect(() => {
+    if (user && id) {
+      fetchLog();
+    }
+  }, [user, id, fetchLog]);
 
   const handleDelete = async () => {
     if (!id) return;
