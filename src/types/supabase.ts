@@ -1,7 +1,7 @@
 export type Database = {
   public: {
     Tables: {
-      [key: string]: any;
+      [key: string]: unknown;
       accountability_partners: {
         Row: AccountabilityPartner;
         Insert: Omit<AccountabilityPartner, "id" | "created_at" | "updated_at">;

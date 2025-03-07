@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useAuth } from "@/components/providers/AuthProvider";
 import { createClient } from "@/lib/supabase";
 import { toast } from "sonner";
@@ -23,13 +23,7 @@ export default function MyLogsPage() {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [logToDelete, setLogToDelete] = useState<Log | null>(null);
 
-  useEffect(() => {
-    if (user) {
-      fetchLogs();
-    }
-  }, [user]);
-
-  const fetchLogs = async () => {
+  const fetchLogs = useCallback(async () => {
     try {
       setIsLoading(true);
       const supabase = createClient();
@@ -38,18 +32,24 @@ export default function MyLogsPage() {
         .from("logs")
         .select("*")
         .eq("user_id", user?.id)
-        .order("created_at", { ascending: false });
+        .order("log_date", { ascending: false });
 
       if (error) throw error;
 
       setLogs(data || []);
     } catch (error) {
       console.error("Error fetching logs:", error);
-      toast.error("Failed to load your logs");
+      toast.error("Failed to load logs");
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [user?.id]);
+
+  useEffect(() => {
+    if (user) {
+      fetchLogs();
+    }
+  }, [user, fetchLogs]);
 
   const handleCreateLog = () => {
     setIsCreating(true);

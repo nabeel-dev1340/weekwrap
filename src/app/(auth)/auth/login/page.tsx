@@ -26,8 +26,9 @@ export default function LoginPage() {
 
       toast.success("Check your email for the login link!");
       setEmail("");
-    } catch (_error) {
+    } catch (error) {
       toast.error("Failed to send login link. Please try again.");
+      console.error(error);
     } finally {
       setIsLoading(false);
     }
@@ -46,6 +47,7 @@ export default function LoginPage() {
       if (googleError) throw googleError;
     } catch (_error) {
       toast.error("Failed to sign in with Google. Please try again.");
+      console.error(_error);
     } finally {
       setIsGoogleLoading(false);
     }
@@ -55,7 +57,7 @@ export default function LoginPage() {
     <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div className="py-8 px-4 shadow-lg rounded-2xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg sm:px-10">
         <h2 className="mb-6 text-center text-3xl font-bold text-gray-900 dark:text-white">
-          Welcome to WeekWrap
+          Welcome to WeeklyWrap
         </h2>
 
         <div className="space-y-6">
