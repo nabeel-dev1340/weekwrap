@@ -20,9 +20,35 @@ export async function middleware(req: NextRequest) {
   if (
     !session &&
     (req.nextUrl.pathname.startsWith("/mylogs") ||
-      req.nextUrl.pathname.startsWith("/profile"))
+      req.nextUrl.pathname.startsWith("/profile") ||
+      req.nextUrl.pathname.startsWith("/setup"))
   ) {
     return NextResponse.redirect(new URL("/auth/login", req.url));
+  }
+
+  // Check if user has completed setup
+  if (session) {
+    // Skip setup check for the setup page itself
+    if (!req.nextUrl.pathname.startsWith("/setup")) {
+      try {
+        const { data: profile, error } = await supabase
+          .from("profiles")
+          .select("setup_completed")
+          .eq("id", session.user.id)
+          .single();
+
+        // If profile doesn't exist or setup not completed, redirect to setup
+        if (
+          (error && error.code === "PGRST116") ||
+          (profile && profile.setup_completed === false)
+        ) {
+          return NextResponse.redirect(new URL("/setup", req.url));
+        }
+      } catch (error) {
+        console.error("Error checking profile:", error);
+        // If there's an error, let the user continue to avoid blocking them
+      }
+    }
   }
 
   return res;
