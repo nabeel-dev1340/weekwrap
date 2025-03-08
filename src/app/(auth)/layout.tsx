@@ -20,7 +20,7 @@ export default function AuthLayout({
               href="/"
               className="px-4 text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 hover:opacity-80 transition-all"
             >
-              WeeklyWrap
+              WeekWrap
             </Link>
           </div>
         </div>

@@ -20,7 +20,7 @@ export default function Features() {
             <FeatureItem
               icon={<IconMail />}
               title="Automated Weekly Reports"
-              description="Every Sunday, WeeklyWrap compiles your week's accomplishments into a clean report and emails it to your accountability partner automatically."
+              description="Every Sunday, WeekWrap compiles your week's accomplishments into a clean report and emails it to your accountability partner automatically."
               color="purple"
             />
 

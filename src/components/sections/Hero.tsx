@@ -30,7 +30,7 @@ export default function Hero() {
         <div className="mb-10 p-6 glass rounded-2xl shadow-sm max-w-2xl backdrop-blur-sm animate-fade-in">
           <p className="text-gray-700 dark:text-gray-300 italic">
             &quot;When Elon asked his executives what they accomplished each
-            week, it changed how they worked. WeeklyWrap brings that same
+            week, it changed how they worked. WeekWrap brings that same
             accountability to everyone – not just billionaires.&quot;
           </p>
         </div>

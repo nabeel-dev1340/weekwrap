@@ -137,8 +137,8 @@ export default function SetupPage() {
                 />
               </div>
 
-              <h1 className="text-3xl font-bold mt-6 text-center text-gray-900 dark:text-white">
-                Welcome to WeeklyWrap!
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+                Welcome to WeekWrap
               </h1>
 
               <p className="mt-4 text-center text-gray-600 dark:text-gray-300">
@@ -158,7 +158,7 @@ export default function SetupPage() {
                     <p className="mt-1 text-sm text-blue-700 dark:text-blue-400">
                       Research shows that having an accountability partner
                       increases your chances of achieving goals by up to 95%.
-                      WeeklyWrap helps you leverage this powerful principle.
+                      WeekWrap helps you leverage this powerful principle.
                     </p>
                   </div>
                 </div>

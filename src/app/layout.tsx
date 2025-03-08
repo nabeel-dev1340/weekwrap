@@ -15,7 +15,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "WeeklyWrap - What did you get done this week?",
+  title: "WeekWrap - What did you get done this week?",
   description:
     "Track your accomplishments and share with accountability partners to boost your productivity.",
 };

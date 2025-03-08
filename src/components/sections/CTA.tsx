@@ -11,7 +11,7 @@ export default function CTA() {
           So... what will you get done this week?
         </h2>
         <p className="text-xl mb-10 text-blue-100 max-w-2xl mx-auto">
-          Join WeeklyWrap today and start answering the question that matters.
+          Join WeekWrap today and start answering the question that matters.
           Your accountability partner is waiting.
         </p>
         <Link

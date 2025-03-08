@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-8 md:mb-0">
             <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-400">
-              WeeklyWrap
+              WeekWrap
             </span>
             <p className="mt-2 text-sm text-gray-500">
               Inspired by Elon&apos;s legendary text
@@ -52,7 +52,7 @@ export default function Footer() {
         </div>
         <div className="mt-8 text-center text-sm">
           <p>
-            &copy; {new Date().getFullYear()} WeeklyWrap. Built for
+            &copy; {new Date().getFullYear()} WeekWrap. Built for
             accountability.
           </p>
         </div>
