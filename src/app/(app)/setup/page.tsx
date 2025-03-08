@@ -34,6 +34,33 @@ export default function SetupPage() {
     checkProfile();
   }, [user]);
 
+  const notifyPartner = async (partnerName: string, partnerEmail: string) => {
+    try {
+      const response = await fetch("/api/notify-partner", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          partnerName,
+          partnerEmail,
+          userName: user?.user_metadata?.full_name || user?.email,
+        }),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || "Failed to send notification");
+      }
+
+      return true;
+    } catch (error) {
+      console.error("Error notifying partner:", error);
+      // Don't block the setup process if notification fails
+      return false;
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -72,6 +99,9 @@ export default function SetupPage() {
         console.error("Profile error:", profileError);
         throw profileError;
       }
+
+      // Send notification email to the accountability partner
+      await notifyPartner(partnerName, partnerEmail);
 
       toast.success("Setup completed successfully!");
       router.push("/mylogs");

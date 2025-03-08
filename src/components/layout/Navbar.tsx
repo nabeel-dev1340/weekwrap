@@ -66,7 +66,7 @@ export default function Navbar() {
                 </button>
 
                 {isMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-56 py-2 bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-xl shadow-lg border border-gray-200/50 dark:border-gray-700/50">
+                  <div className="absolute right-0 mt-2 w-56 py-2 bg-white dark:bg-gray-800 backdrop-blur-lg rounded-xl shadow-lg border border-gray-200/50 dark:border-gray-700/50">
                     <div className="px-4 py-2 border-b border-gray-200/50 dark:border-gray-700/50">
                       <p className="text-sm font-medium text-gray-900 dark:text-white truncate">
                         {user?.email}
